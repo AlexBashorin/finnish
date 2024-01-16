@@ -53,7 +53,7 @@ func home(w http.ResponseWriter, r *http.Request) {
 	data.EngValue = content[0].Eng
 	data.Answer = content[0].Fin
 
-	filename := "templates/index.html"
+	filename := "index.html"
 	render(w, filename, data)
 }
 
