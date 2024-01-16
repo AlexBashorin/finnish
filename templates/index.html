@@ -1,0 +1,23 @@
+<script src="https://unpkg.com/htmx.org@1.9.10"></script>
+
+<div style="text-align: center;">
+    <h1>{{.PageTitle}}</h1>
+
+    <form action="/" method="POST">
+        <div>
+            <p><label for="">English word:</label></p>
+            <p>{{.EngValue}}</p>
+        </div>
+        <div>
+            <p><label for="">Your answer:</label></p>
+            <input type="text" name="finword" />
+        </div>
+        
+        <button hx-post="/check" hx-target="#answer" hx-swap="beforeend">
+            Check
+        </button>
+    </form>
+    
+    <p id="answer"></p>
+</div>
+
