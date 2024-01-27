@@ -1,11 +1,23 @@
 <!-- <script src="https://unpkg.com/htmx.org@1.9.10"></script> -->
-<link rel="stylesheet" href="./jsver/main.css">
 
-<div class="wrap">
-    <div class="write-fin" style="text-align: center;">
-        <h1>Перевод на финский</h1>
-    
-        <!-- <form action="/" method="POST"> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./jsver/main.css">
+    <title>finnish</title>
+</head>
+
+<body>
+
+    <div class="wrap">
+        <div class="write-fin" style="text-align: center;">
+            <h1>Перевод на финский</h1>
+
+            <!-- <form action="/" method="POST"> -->
             <div class="write-fin__field">
                 <p for="">На английском:</p>
                 <b class="engword"></b>
@@ -14,25 +26,27 @@
                 <p>Твой ответ:</p>
                 <input class="user-answer" type="text" name="finword" />
             </div>
-        <!-- </form> -->
-        <button class="check-btn">
-            Check
-        </button>
-        
-        <p id="answer">test</p>
+            <!-- </form> -->
+            <button class="check-btn">
+                Check
+            </button>
 
-        <div class="handleAnswer">
-            <p>Разбор:</p>
-            <div class="handleAnswer__value"></div>
-        </div>
+            <p id="answer">test</p>
 
-        <div class="showAnswerWrap">
-            <button class="showAnswer">Ответ:</button>
-            <b class="realAnswer"></b>
-            <p class="didSaw" title="Вы посмотрели :D"></p>
+            <div class="handleAnswer">
+                <p>Разбор:</p>
+                <div class="handleAnswer__value"></div>
+            </div>
+
+            <div class="showAnswerWrap">
+                <button class="showAnswer">Ответ:</button>
+                <b class="realAnswer"></b>
+                <p class="didSaw" title="Вы посмотрели :D"></p>
+            </div>
         </div>
     </div>
-</div>
 
-<script type="module" src="./jsver/main.js" ></script>
+    <script type="module" src="./jsver/main.js"></script>
+</body>
 
+</html>
