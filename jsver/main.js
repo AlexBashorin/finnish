@@ -7,6 +7,10 @@ const engWord = document.querySelector(".engword")
 const handleAnsw = document.querySelector(".handleAnswer")
 const handleAnswVal = document.querySelector(".handleAnswer__value")
 
+const showAnswer = document.querySelector(".showAnswer")
+const realAnswer = document.querySelector(".realAnswer")
+const didSaw = document.querySelector(".didSaw")
+
 let eng;
 let fin;
 function getRandomWord() {
@@ -16,7 +20,17 @@ function getRandomWord() {
 }
 getRandomWord()
 
-checkBtn.addEventListener("click", () => {
+checkBtn.addEventListener("click", () => checkWord())
+inpValue.addEventListener("keyup", (e) => {
+    if(e.target.key == "Enter" || e.keyCode == 13) {checkWord()}
+})
+
+showAnswer.addEventListener("click", () => {
+    realAnswer.textContent = fin
+    didSaw.textContent = "👀"
+})
+
+function checkWord() {
     let v = inpValue.value
 
     if (v && fin) {
@@ -67,9 +81,9 @@ checkBtn.addEventListener("click", () => {
                     const r = document.createElement("p")
                     if (i.isValid == false) {
                         r.classList.add("wrongRune")
-                        r.textContent = i.v_val == " " ? "  " : i.v_val
+                        r.textContent = i.v_val == " " ? "__" : i.v_val
                     } else {
-                        r.textContent = i.fin_val == " " ? "  " : i.fin_val
+                        r.textContent = i.fin_val == " " ? "__" : i.fin_val
                     }
                     handleAnswVal.appendChild(r)
                 }
@@ -78,4 +92,4 @@ checkBtn.addEventListener("click", () => {
             }
         }
     }
-})
+}
