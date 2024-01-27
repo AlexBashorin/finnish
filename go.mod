@@ -2,4 +2,11 @@ module fin
 
 go 1.21.3
 
-require github.com/bmizerany/pat v0.0.0-20210406213842-e4b6760bdd6f
+require github.com/basgys/goxml2json v1.1.0
+
+require (
+	github.com/bitly/go-simplejson v0.5.1 // indirect
+	github.com/stretchr/testify v1.8.4 // indirect
+	golang.org/x/net v0.20.0 // indirect
+	golang.org/x/text v0.14.0 // indirect
+)

@@ -50,7 +50,7 @@ function checkWord() {
             handleAnsw.style.display = "none"
             handleAnswVal.innerHTML = ""
 
-            answer.textContent = "Не верно, сорри"
+            answer.textContent = "Неверно, сорри"
 
             let userV = []
             userV = v.split("")
