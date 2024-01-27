@@ -1,6 +1,7 @@
 package xml_json
 
 import (
+	"html/template"
 	"log"
 	"net/http"
 	"strings"
@@ -21,6 +22,36 @@ func ParseXml(xml string) string {
 	return json.String()
 }
 
+type Xmlfile struct {
+	Jsonstruct string
+}
+
 func HandleXML(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("test"))
+	if r.Method == "GET" {
+		t, err := template.ParseFiles("./xml_json/templates/xtj.html")
+		check(err)
+		t.Execute(w, nil)
+	} else {
+		r.ParseForm()
+
+		// xmlFile, _, errF := r.FormFile("xml_file")
+		// check(errF)
+		// defer xmlFile.Close()
+
+		// buf := bytes.NewBuffer(nil)
+		// _, err := io.Copy(buf, xmlFile)
+		// check(err)
+		// bytesBuf := buf.Bytes()
+
+		// parseXmlFromFile := ParseXml(string(bytesBuf))
+
+		xmlData := r.Form.Get("entered_xml")
+		jsonData := ParseXml(xmlData)
+
+		myUser := Xmlfile{}
+		myUser.Jsonstruct = jsonData
+		t, err := template.ParseFiles("./xml_json/templates/xtj_response.html")
+		check(err)
+		t.Execute(w, myUser)
+	}
 }
