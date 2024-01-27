@@ -14,6 +14,7 @@ const checkBtn = document.querySelector(".check-btn")
 const engWord = document.querySelector(".engword")
 const handleAnsw = document.querySelector(".handleAnswer")
 const handleAnswVal = document.querySelector(".handleAnswer__value")
+const nextWord = document.querySelector(".nextWord")
 
 const showAnswer = document.querySelector(".showAnswer")
 const realAnswer = document.querySelector(".realAnswer")
@@ -32,6 +33,8 @@ checkBtn.addEventListener("click", () => checkWord())
 inpValue.addEventListener("keyup", (e) => {
     if(e.target.key == "Enter" || e.keyCode == 13) {checkWord()}
 })
+
+nextWord.addEventListener("click", () => getRandomWord())
 
 showAnswer.addEventListener("click", () => {
     realAnswer.textContent = fin

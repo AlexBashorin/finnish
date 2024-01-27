@@ -133,3 +133,17 @@
     color: #6e8f8b;
     font-weight: 900;
 }
+
+.nextWord {
+    width: 100%;
+    border: none;
+    background: #d6f1ed;
+    color: #446561;
+    border-radius: 16px;
+    padding: 8px 0;
+    cursor: pointer;
+}
+.nextWord:hover {
+    background: #446561;
+    color: #d6f1ed;
+}
