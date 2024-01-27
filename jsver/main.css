@@ -66,3 +66,30 @@
     font-weight: 900;
     font-size: 1.2em;
 }
+
+.wrongRune {
+    color: red;
+}
+
+.handleAnswer {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: flex-start;
+    width: 100%;
+    height: max-content;
+    border-top: 1px solid #ddd;
+
+    display: none;
+}
+
+.handleAnswer__value {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: flex-start;
+    gap: 2px;
+}
+.handleAnswer__value p {
+    margin: 0;
+}

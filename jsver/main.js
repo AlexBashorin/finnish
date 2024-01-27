@@ -4,6 +4,8 @@ const answer = document.getElementById("answer")
 const inpValue = document.querySelector(".user-answer")
 const checkBtn = document.querySelector(".check-btn")
 const engWord = document.querySelector(".engword")
+const handleAnsw = document.querySelector(".handleAnswer")
+const handleAnswVal = document.querySelector(".handleAnswer__value")
 
 let eng;
 let fin;
@@ -15,14 +17,65 @@ function getRandomWord() {
 getRandomWord()
 
 checkBtn.addEventListener("click", () => {
-    let v = inpValue.value 
-    console.log(fin)   
+    let v = inpValue.value
 
     if (v && fin) {
         if (v == fin) {
             answer.textContent = "Верно!"
+            handleAnsw.style.display = "none"
+            handleAnswVal.innerHTML = ""
         } else {
+            handleAnsw.style.display = "none"
+            handleAnswVal.innerHTML = ""
+
             answer.textContent = "Не верно, сорри"
+
+            let userV = []
+            userV = v.split("")
+            let finV = []
+            finV = fin.split("")
+
+            if (userV.length < finV.length) {
+                let dif = finV.length - userV.length
+                let empty = new Array(dif)
+                empty.fill("_")
+
+                userV.push(...empty)
+            }
+
+            let handAns = []
+            for (let i = 0; i < userV.length; i++) {
+                if (userV[i] == finV[i]) {
+                    let rune = {
+                        isValid: true,
+                        v_val: userV[i],
+                        fin_val: finV[i]
+                    }
+                    handAns.push(rune)
+                } else {
+                    let rune = {
+                        isValid: false,
+                        v_val: userV[i],
+                        fin_val: finV[i]
+                    }
+                    handAns.push(rune)
+                }
+            }
+
+            if (handAns && handAns.length > 0) {
+                for (let i of handAns) {
+                    const r = document.createElement("p")
+                    if (i.isValid == false) {
+                        r.classList.add("wrongRune")
+                        r.textContent = i.v_val == " " ? "  " : i.v_val
+                    } else {
+                        r.textContent = i.fin_val == " " ? "  " : i.fin_val
+                    }
+                    handleAnswVal.appendChild(r)
+                }
+
+                handleAnsw.style.display = "block"
+            }
         }
     }
 })
