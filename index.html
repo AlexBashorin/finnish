@@ -1,23 +1,27 @@
-<script src="https://unpkg.com/htmx.org@1.9.10"></script>
+<!-- <script src="https://unpkg.com/htmx.org@1.9.10"></script> -->
+<link rel="stylesheet" href="./jsver/main.css">
 
-<div style="text-align: center;">
-    <h1>{{.PageTitle}}</h1>
-
-    <form action="/" method="POST">
-        <div>
-            <p><label for="">English word:</label></p>
-            <p>{{.EngValue}}</p>
-        </div>
-        <div>
-            <p><label for="">Your answer:</label></p>
-            <input type="text" name="finword" />
-        </div>
-        
-        <button hx-post="/check" hx-target="#answer" hx-swap="beforeend">
+<div class="wrap">
+    <div class="write-fin" style="text-align: center;">
+        <h1>Перевод на финский</h1>
+    
+        <!-- <form action="/" method="POST"> -->
+            <div class="write-fin__field">
+                <p for="">На английском:</p>
+                <b class="engword"></b>
+            </div>
+            <div class="write-fin__field">
+                <p>Твой ответ:</p>
+                <input class="user-answer" type="text" name="finword" />
+            </div>
+        <!-- </form> -->
+        <button class="check-btn">
             Check
         </button>
-    </form>
-    
-    <p id="answer"></p>
+        
+        <p id="answer">test</p>
+    </div>
 </div>
+
+<script src="./jsver/main.js" type="module"></script>
 
