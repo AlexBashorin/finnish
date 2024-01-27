@@ -1,7 +1,7 @@
 // import data from "../source_data/qa.json" assert { type: 'json' };
 let data = []
 
-await fetch("./source_data/qa.json")
+await fetch("./qa.json")
 .then(response => {
    return response.json();
 })
