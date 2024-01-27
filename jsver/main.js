@@ -1,4 +1,12 @@
-import data from "../source_data/qa.json" assert { type: 'json' };
+// import data from "../source_data/qa.json" assert { type: 'json' };
+let data = []
+
+await fetch("../source_data/qa.json")
+.then(response => {
+   return response.json();
+})
+.then(d => data = d);
+
 
 const answer = document.getElementById("answer")
 const inpValue = document.querySelector(".user-answer")
