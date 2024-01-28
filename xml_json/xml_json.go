@@ -1,7 +1,10 @@
 package xml_json
 
 import (
+	"bytes"
+	"fmt"
 	"html/template"
+	"io"
 	"log"
 	"net/http"
 	"strings"
@@ -27,6 +30,7 @@ type Xmlfile struct {
 }
 
 func HandleXML(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {})
 	if r.Method == "GET" {
 		t, err := template.ParseFiles("./xml_json/templates/xtj.html")
 		check(err)
@@ -34,24 +38,26 @@ func HandleXML(w http.ResponseWriter, r *http.Request) {
 	} else {
 		r.ParseForm()
 
-		// xmlFile, _, errF := r.FormFile("xml_file")
-		// check(errF)
-		// defer xmlFile.Close()
+		xmlFile, _, errF := r.FormFile("xml_file")
+		check(errF)
+		defer xmlFile.Close()
 
-		// buf := bytes.NewBuffer(nil)
-		// _, err := io.Copy(buf, xmlFile)
-		// check(err)
-		// bytesBuf := buf.Bytes()
+		buf := bytes.NewBuffer(nil)
+		_, err := io.Copy(buf, xmlFile)
+		check(err)
+		bytesBuf := buf.Bytes()
 
-		// parseXmlFromFile := ParseXml(string(bytesBuf))
+		fmt.Println(bytesBuf)
 
-		xmlData := r.Form.Get("entered_xml")
-		jsonData := ParseXml(xmlData)
+		parseXmlFromFile := ParseXml(string(bytesBuf))
 
-		myUser := Xmlfile{}
-		myUser.Jsonstruct = jsonData
+		// xmlData := r.Form.Get("entered_xml")
+		// jsonData := ParseXml(xmlData)
+
+		// myUser := Xmlfile{}
+		// myUser.Jsonstruct = jsonData
 		t, err := template.ParseFiles("./xml_json/templates/xtj_response.html")
 		check(err)
-		t.Execute(w, myUser)
+		t.Execute(w, parseXmlFromFile)
 	}
 }

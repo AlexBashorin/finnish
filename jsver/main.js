@@ -45,7 +45,7 @@ function checkWord() {
     let v = inpValue.value
 
     if (v && fin) {
-        if (v == fin) {
+        if (v.toLowerCase() == fin.toLowerCase()) {
             answer.textContent = "Верно!"
             handleAnsw.style.display = "none"
             handleAnswVal.innerHTML = ""
