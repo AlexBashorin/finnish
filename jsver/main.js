@@ -45,7 +45,7 @@ function checkWord() {
     let v = inpValue.value
 
     if (v && fin) {
-        if (v.toLowerCase() == fin.toLowerCase()) {
+        if (v == fin) {
             answer.textContent = "Верно!"
             handleAnsw.style.display = "none"
             handleAnswVal.innerHTML = ""
@@ -70,7 +70,7 @@ function checkWord() {
 
             let handAns = []
             for (let i = 0; i < userV.length; i++) {
-                if (userV[i].toLowerCase() == finV[i].toLowerCase()) {
+                if (userV[i] == finV[i]) {
                     let rune = {
                         isValid: true,
                         v_val: userV[i],
