@@ -70,7 +70,7 @@ function checkWord() {
 
             let handAns = []
             for (let i = 0; i < userV.length; i++) {
-                if (userV[i] == finV[i]) {
+                if (userV[i].toLowerCase() == finV[i].toLowerCase()) {
                     let rune = {
                         isValid: true,
                         v_val: userV[i],
