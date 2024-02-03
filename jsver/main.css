@@ -33,13 +33,22 @@
     margin: 0;
 }
 
+.write-fin__field-enter {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    width: 100%;
+}
+
 .engword {
     font-size: 1.7em;
     font-weight: 900;
 }
 
 .user-answer {
-    width: 100%;
+    /* flex: 5; */
+    width: 90%;
     height: 40px;
     margin: 10px 0;
     border: 1px solid #ddd;
@@ -146,4 +155,13 @@
 .nextWord:hover {
     background: #acd4ce;
     color: #ffffff;
+}
+
+.play_result {
+    /* flex: 1; */
+    width: 60px;
+    height: 30px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
 }

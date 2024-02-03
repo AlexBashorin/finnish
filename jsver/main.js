@@ -2,10 +2,10 @@
 let data = []
 
 await fetch("../qa.json")
-.then(response => {
-   return response.json();
-})
-.then(d => data = d);
+    .then(response => {
+        return response.json();
+    })
+    .then(d => data = d);
 
 
 const answer = document.getElementById("answer")
@@ -34,7 +34,7 @@ getRandomWord()
 
 checkBtn.addEventListener("click", () => checkWord())
 inpValue.addEventListener("keyup", (e) => {
-    if(e.target.key == "Enter" || e.keyCode == 13) {checkWord()}
+    if (e.target.key == "Enter" || e.keyCode == 13) { checkWord() }
 })
 
 nextWord.addEventListener("click", () => getRandomWord())
@@ -107,3 +107,32 @@ function checkWord() {
         }
     }
 }
+
+
+// Speach
+const playResult = document.querySelector(".play_result")
+
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+const SpeechGrammarList = window.SpeechGrammarList || window.webkitSpeechGrammarList;
+const SpeechRecognitionEvent = window.SpeechRecognitionEvent || window.webkitSpeechRecognitionEvent;
+const recognition = new SpeechRecognition();
+const speechRecognitionList = new SpeechGrammarList();
+
+recognition.grammars = speechRecognitionList;
+recognition.continuous = false;
+recognition.lang = "fi";
+recognition.interimResults = false;
+recognition.maxAlternatives = 1;
+
+playResult.onclick = () => {
+    recognition.start();
+    console.log("Ready to receive a color command.");
+};
+
+recognition.onresult = (event) => {
+    const color = event.results[0][0].transcript;
+    let res = `Result received: ${color}.`;
+    // bg.style.backgroundColor = color;
+    console.log(res);
+    inpValue.value = color
+};
