@@ -66,6 +66,7 @@
     color: #fff;
     border: none;
     border-radius: 16px;
+    font-size: 1em;
     cursor: pointer;
 }
 
@@ -150,6 +151,7 @@
     color: #446561;
     border-radius: 16px;
     padding: 16px 0;
+    font-size: 1em;
     cursor: pointer;
 }
 .nextWord:hover {
