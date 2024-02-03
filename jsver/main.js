@@ -135,4 +135,40 @@ recognition.onresult = (event) => {
     // bg.style.backgroundColor = color;
     console.log(res);
     inpValue.value = color
+    checkWord()
+};
+
+// syn speech
+const synth = window.speechSynthesis;
+
+// const inputForm = document.querySelector("form");
+// const inputTxt = document.querySelector("input");
+// const voiceSelect = document.querySelector("select");
+
+// let voices;
+
+// function loadVoices() {
+//   voices = synth.getVoices();
+//   for (let i = 0; i < voices.length; i++) {
+//     const option = document.createElement("option");
+//     option.textContent = `${voices[i].name} (${voices[i].lang})`;
+//     option.value = i;
+//     voiceSelect.appendChild(option);
+//   }
+// }
+
+// in Google Chrome the voices are not ready on page load
+// if ("onvoiceschanged" in synth) {
+//   synth.onvoiceschanged = loadVoices;
+// } else {
+//   loadVoices();
+// }
+
+document.querySelector(".speechPlease").onclick = (event) => {
+//   event.preventDefault();
+
+  const utterThis = new SpeechSynthesisUtterance(fin);
+//   utterThis.voice = voices[voiceSelect.value];
+  synth.speak(utterThis);
+//   inputTxt.blur();
 };
